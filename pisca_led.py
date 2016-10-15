@@ -30,9 +30,9 @@ def write_pino(pin_num, pin_value):
     file.close()
 
 def read_gpio(pin_num):
-    gpiopin = "gpio%s" % (str(pin_no), )
+    gpiopin = "gpio%s" % (str(pin_num), )
     file = open("/sys/class/gpio/"+gpiopin+"/value","r")
-    value = pin.read()
+    value = file.read()
     print "The value on the PIN %s is : %s" % (str(pin_num), str(value))
     file.close()
     return int(value)
@@ -46,8 +46,8 @@ if __name__ == '__main__':
 
     while(1):
       try:	
-      	write_pino(pin, 1)
-      	time.sleep(1)
+	write_pino(pin, 1)
+    	time.sleep(1)
       	write_pino(pin, 0)
       	time.sleep(1)
       except:
